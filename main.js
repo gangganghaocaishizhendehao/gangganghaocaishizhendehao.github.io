@@ -23,7 +23,7 @@ require.config({
 
 })
 
-require(['jquery','teacher/list','category/catelist','bootstrap'],function($,teacherList,catelist){
+require(['jquery','teacher/list','course/add','category/catelist','course/courseList','bootstrap'],function($,teacherList,course,catelist,courseList){
             var resultData3=sessionStorage.getItem('resultData2')
             var resultData4=JSON.parse(resultData3)
             if(!resultData4){
@@ -46,6 +46,7 @@ require(['jquery','teacher/list','category/catelist','bootstrap'],function($,tea
 
              }else if($(this).hasClass('course-manager')){
                   console.log(2)
+                  courseList();
 
              }else if($(this).hasClass('course-category')){
                  catelist();
@@ -53,12 +54,9 @@ require(['jquery','teacher/list','category/catelist','bootstrap'],function($,tea
                
              }else if($(this).hasClass('chart')){
                console.log(4)
+             }else if($(this).hasClass('add-course')){
+               course();
              }
-
-
-
-
-             
 
 })
     $(".left .list-group .teacher-manager").trigger("click");

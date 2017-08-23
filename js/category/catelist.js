@@ -1,9 +1,11 @@
 define([
     'jquery',
     'text!tpls/catelist.html',
-    "template"
-], function($,catelisttpl,template) {
-    return function(){
+    "template",
+    'category/cateAdd',
+    'category/cateEdit'
+], function($,catelisttpl,template,cateAdd,cateEdit) {
+    return function categoryListFn(){
         $.ajax({
             url:"/api/category",
             type:'get',
@@ -12,7 +14,18 @@ define([
 
                 var catelist=template.render(catelisttpl,res)
 
-                 $('#body_innerContent').html(catelist);
+                var $catelist=$(catelist)
+
+                $catelist.on('click','.btn-add',function(){
+                        cateAdd();
+                }).on('click','.btn-primary',function(){
+                    var id=$(this).parent().attr('cg_id');
+                    console.log(id)
+                        cateEdit(id,function(){
+                            categoryListFn()
+                        });
+                })
+                 $('#body_innerContent').html($catelist);
             }
 
 

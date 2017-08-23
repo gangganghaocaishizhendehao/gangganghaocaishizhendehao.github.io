@@ -1,4 +1,4 @@
-<div>
+<div class="catelistHtml">
     <ol class="breadcrumb">
         <li><a href="#">分类管理</a></li>
         <li class="active">分类列表</li>
@@ -25,7 +25,7 @@
                     <td>{{v.total}}</td>
                     <td>{{v.cg_is_hide==0?"显示":"隐藏"}}</td>
                     <td>{{v.cg_order}}</td>
-                    <td>
+                    <td cg_id="{{v.cg_id}}">
                         <button class="btn btn-primary">编辑</button>
                     </td>
                 </tr>
